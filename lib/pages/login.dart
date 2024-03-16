@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:tt/controller/authcontroller.dart';
 
@@ -101,6 +102,8 @@ class _LoginState extends State<Login> {
                         }
                         return null;
                       },
+                      keyboardType: TextInputType.number,
+                      inputFormatters: <TextInputFormatter>[FilteringTextInputFormatter.digitsOnly],
                       decoration: const InputDecoration(
                           enabledBorder: OutlineInputBorder(
                               borderSide: BorderSide(color: Colors.black)),
@@ -167,6 +170,7 @@ class _LoginState extends State<Login> {
                         onPressed: () {
                           // Add your sign in logic here
                           if (formstate.currentState!.validate()) {}
+                          Login();
                         },
                         child: const Text(
                           'Sign In',

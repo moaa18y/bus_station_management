@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class Signup extends StatefulWidget {
@@ -77,7 +78,7 @@ class _SignupState extends State<Signup> {
                                 borderSide: BorderSide(color: Colors.black)),
                             fillColor: Color(0xFFFAFAFA),
                             filled: true,
-                            hintText: "First Name",
+                            hintText: "First name",
                             hintStyle: TextStyle(
                               color: Color(0xFF999999),
                             )),
@@ -97,7 +98,7 @@ class _SignupState extends State<Signup> {
                                 borderSide: BorderSide(color: Colors.black)),
                             fillColor: Color(0xFFFAFAFA),
                             filled: true,
-                            hintText: "Last Name",
+                            hintText: "Last name",
                             hintStyle: TextStyle(
                               color: Color(0xFF999999),
                             )),
@@ -131,9 +132,13 @@ class _SignupState extends State<Signup> {
                             return "Enter a mobile number";
                           } else if (value.length > 11) {
                             return "Enter a valid mobile number";
+                          } else if (value.length < 11) {
+                            return "Enter a valid mobile number";
                           }
                           return null;
                         },
+                        keyboardType: TextInputType.number,
+                      inputFormatters: <TextInputFormatter>[FilteringTextInputFormatter.digitsOnly],
                         decoration: const InputDecoration(
                             enabledBorder: OutlineInputBorder(
                                 borderSide: BorderSide(color: Colors.black)),
