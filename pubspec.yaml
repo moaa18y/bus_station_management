@@ -31,8 +31,6 @@ dependencies:
   cupertino_icons: ^1.0.6
   flutter:
     sdk: flutter
-  flutter_localizations:
-    sdk: flutter
   flutter_svg: ^2.0.10+1
   http: ^1.2.1
 
@@ -77,5 +75,3 @@ flutter:
         - asset: assets/fonts/Courgette-Regular.ttf
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
-flutter_intl:
-  enabled: true
