@@ -103,7 +103,9 @@ class _LoginState extends State<Login> {
                         return null;
                       },
                       keyboardType: TextInputType.number,
-                      inputFormatters: <TextInputFormatter>[FilteringTextInputFormatter.digitsOnly],
+                      inputFormatters: <TextInputFormatter>[
+                        FilteringTextInputFormatter.digitsOnly
+                      ],
                       decoration: const InputDecoration(
                           enabledBorder: OutlineInputBorder(
                               borderSide: BorderSide(color: Colors.black)),
@@ -169,8 +171,8 @@ class _LoginState extends State<Login> {
                             backgroundColor: const Color(0xFF00ADCF)),
                         onPressed: () {
                           // Add your sign in logic here
-                          if (formstate.currentState!.validate()) {}
-                          Login();
+                          if (formstate.currentState!.validate()) {Login();}
+                          
                         },
                         child: const Text(
                           'Sign In',

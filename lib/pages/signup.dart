@@ -1,3 +1,5 @@
+// ignore_for_file: unused_field
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -10,6 +12,9 @@ class Signup extends StatefulWidget {
 }
 
 class _SignupState extends State<Signup> {
+  late String _fname, _lname, _email, _phone;
+  final TextEditingController _password = TextEditingController();
+  final TextEditingController _confirmpassword = TextEditingController();
   GlobalKey<FormState> formstate = GlobalKey();
 
   @override
@@ -73,6 +78,9 @@ class _SignupState extends State<Signup> {
                           }
                           return null;
                         },
+                        onSaved: (fName) {
+                          _fname = fName!;
+                        },
                         decoration: const InputDecoration(
                             enabledBorder: OutlineInputBorder(
                                 borderSide: BorderSide(color: Colors.black)),
@@ -93,6 +101,9 @@ class _SignupState extends State<Signup> {
                           }
                           return null;
                         },
+                        onSaved: (lName) {
+                          _lname = lName!;
+                        },
                         decoration: const InputDecoration(
                             enabledBorder: OutlineInputBorder(
                                 borderSide: BorderSide(color: Colors.black)),
@@ -110,8 +121,15 @@ class _SignupState extends State<Signup> {
                         validator: (value) {
                           if (value!.isEmpty) {
                             return "Enter your email";
+                          } else if (!RegExp(
+                                  "^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+.[a-z]")
+                              .hasMatch(value)) {
+                            return "Enter a valid email";
                           }
                           return null;
+                        },
+                        onSaved: (email) {
+                          _email = email!;
                         },
                         decoration: const InputDecoration(
                             enabledBorder: OutlineInputBorder(
@@ -137,8 +155,13 @@ class _SignupState extends State<Signup> {
                           }
                           return null;
                         },
+                        onSaved: (phone) {
+                          _phone = phone!;
+                        },
                         keyboardType: TextInputType.number,
-                      inputFormatters: <TextInputFormatter>[FilteringTextInputFormatter.digitsOnly],
+                        inputFormatters: <TextInputFormatter>[
+                          FilteringTextInputFormatter.digitsOnly
+                        ],
                         decoration: const InputDecoration(
                             enabledBorder: OutlineInputBorder(
                                 borderSide: BorderSide(color: Colors.black)),
@@ -154,25 +177,20 @@ class _SignupState extends State<Signup> {
                       //textfield Create password
                       const SizedBox(height: 20),
                       TextFormField(
+                        controller: _password,
                         validator: (value) {
-                          String? message;
                           if (value!.isEmpty) {
                             return "Enter a password";
-                          } else if (value.length <= 8) {
+                          } else if (value.length < 8) {
                             return "Should be at least 8 characters";
                           } else if (!RegExp(".*[0-9].*").hasMatch(value)) {
-                            message ??= '';
-                            message += 'Should have at least one number. ';
+                            return 'Should have at least one number. ';
                           } else if (!RegExp('.*[a-z].*').hasMatch(value)) {
-                            message ??= '';
-                            message +=
-                                'Should have at least one lowercase letter.';
+                            return 'Should have at least one lowercase letter.';
                           } else if (!RegExp('.*[A-Z].*').hasMatch(value)) {
-                            message ??= '';
-                            message +=
-                                'Should have at least one uppercase letter.';
+                            return 'Should have at least one uppercase letter.';
                           }
-                          return message;
+                          return null;
                         },
                         decoration: const InputDecoration(
                             enabledBorder: OutlineInputBorder(
@@ -189,9 +207,12 @@ class _SignupState extends State<Signup> {
                       //textfield Confirm password
                       const SizedBox(height: 20),
                       TextFormField(
+                        controller: _confirmpassword,
                         validator: (value) {
                           if (value!.isEmpty) {
                             return "Enter a password";
+                          }else if(_password.text != _confirmpassword.text){
+                            return "Password doesn't match";
                           }
                           return null;
                         },
