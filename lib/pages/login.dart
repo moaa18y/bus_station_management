@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:tt/controller/authcontroller.dart';
+//import 'package:tt/controller/authcontroller.dart';
 
 class Login extends StatefulWidget {
   const Login({super.key});
@@ -12,22 +12,22 @@ class Login extends StatefulWidget {
 
 class _LoginState extends State<Login> {
   GlobalKey<FormState> formstate = GlobalKey();
-  AuthController authController = AuthController();
-  var data;
-  Login() async {
-    var formData = formstate.currentState;
-    if (formData!.validate()) {
-      var mobile;
-      var pass;
-      var data = await authController.LoginAuth(mobile.text, pass.text);
-      if (data["result"] == "not here") {
-        print("not here");
-      }
-    } else {
-      //Navigator.push(context, MaterialPageRoute(builder: (context) => Home()));
-      print("user is here");
-    }
-  }
+  // AuthController authController = AuthController();
+  // var data;
+  // Login() async {
+  //   var formData = formstate.currentState;
+  //   if (formData!.validate()) {
+  //     var mobile;
+  //     var pass;
+  //     var data = await authController.LoginAuth(mobile.text, pass.text);
+  //     if (data["result"] == "not here") {
+  //       print("not here");
+  //     }
+  //   } else {
+  //     Navigator.push(context, MaterialPageRoute(builder: (context) => Home()));
+  //     print("user is here");
+  //   }
+  // }
 
   @override
   Widget build(BuildContext context) => GestureDetector(
@@ -171,8 +171,9 @@ class _LoginState extends State<Login> {
                             backgroundColor: const Color(0xFF00ADCF)),
                         onPressed: () {
                           // Add your sign in logic here
-                          if (formstate.currentState!.validate()) {Login();}
-                          
+                          if (formstate.currentState!.validate()) {
+                            const Login();
+                          }
                         },
                         child: const Text(
                           'Sign In',
