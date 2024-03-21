@@ -19,7 +19,7 @@ class _LoginState extends State<Login> {
   //   if (formData!.validate()) {
   //     var mobile;
   //     var pass;
-  //     var data = await authController.LoginAuth(mobile.text, pass.text);
+  //     var data = await authController.loginAuth(mobile.text, pass.text);
   //     if (data["result"] == "not here") {
   //       print("not here");
   //     }

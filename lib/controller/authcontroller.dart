@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 
 class AuthController {
-  Future LoginAuth(mobile, pass) async {
+  Future loginAuth(mobile, pass) async {
     var url = "http://localhost:4000/api/passenger/login";
     var res = await http.post(Uri.parse(url),
         body: jsonEncode(<String, String>{"mobile": mobile, "pass": pass}),
