@@ -32,7 +32,7 @@ dependencies:
   flutter:
     sdk: flutter
   flutter_svg: ^2.0.10+1
-  google_maps_flutter: ^2.6.0
+  #google_maps_flutter: ^2.6.0
   http: ^1.2.1
 
 dev_dependencies:
@@ -67,6 +67,7 @@ flutter:
   fonts:
     - family: myfont
       fonts:
-        - asset: assets/fonts/Courgette-Regular.ttf
+        - asset: assets/fonts/Montserrat-Black.ttf
+        - asset: assets/fonts/Montserrat-Medium.ttf
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
