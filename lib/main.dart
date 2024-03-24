@@ -1,26 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:tt/pages/login.dart';
 import 'package:tt/pages/signup.dart';
+import 'package:tt/pages/map.dart';
 
 void main() {
   runApp(const MyApp());
 }
 
-class MyApp extends StatefulWidget {
+class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  @override
-  State<MyApp> createState() => _MyAppState();
-}
-
-class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      initialRoute: "/login",
+      initialRoute: "/map",
       routes: {
         "/login": (context) => const Login(),
+        "/map": (context) => const Map(),
         "/signup": (context) => const Signup(),
       },
     );
