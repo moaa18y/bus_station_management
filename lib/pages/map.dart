@@ -1,5 +1,4 @@
 import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
@@ -41,15 +40,12 @@ class _MapState extends State<Map> {
       myLocationEnabled: true,
       myLocationButtonEnabled: false,
       initialCameraPosition: _myCurrentLocationCameraPosition,
-      //      zoomControlsEnabled: false,
-      //      onMapCreated: (GoogleMapController googleMapController) {},
       //      markers: Set.of(_marker),
       //      polylines: Set.of(_polyLine),
       //      circles: myCircles,
       //      cameraTargetBounds: CameraTargetBounds(LatLngBounds(
       //          southwest: const LatLng(30.044563370151725, 31.372447754339312),
       //          northeast: const LatLng(30.047553825717674, 31.389334941345865))),
-      //     initialCameraPosition: _myCurrentLocation,
       onMapCreated: (GoogleMapController controller) {
         _mapController.complete(controller);
       },
@@ -172,7 +168,8 @@ class _MapState extends State<Map> {
         margin: const EdgeInsets.fromLTRB(0, 0, 8, 30),
         child: FloatingActionButton(
           backgroundColor: Colors.blue,
-          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(50)),
+          shape:
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(50)),
           onPressed: _goToMyCurrentLoction,
           child: const Icon(
             Icons.gps_fixed,
