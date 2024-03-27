@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:tt/pages/location_helper.dart';
@@ -154,19 +155,74 @@ class _MapState extends State<Map> {
           icon: const Icon(Icons.arrow_back),
         ),
       ),
-      body: Stack(
+      body: Column(
         children: [
-          position != null
-              ? buildMap()
-              : const Center(
-                  child: CircularProgressIndicator(
-                  color: Colors.blue,
-                ))
+          SizedBox(
+              height: 400, // Adjust the height as needed
+              child: position != null
+                  ? buildMap()
+                  : const Center(
+                      child: CircularProgressIndicator(
+                      color: Colors.blue,
+                    ))),
+          const SizedBox(height: 10),
+          const Text(
+            "Arrival Time",
+            style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+          ),
+          const Text(
+            "00:05:00",
+            style: TextStyle(fontSize: 24, color: Colors.green),
+          ),
+          const SizedBox(height: 14),
+          const Card(
+            elevation: 5.0,
+            color: Color.fromARGB(255, 214, 210, 210),
+            margin: EdgeInsets.symmetric(horizontal: 16),
+            child: Padding(
+              padding: EdgeInsets.all(16.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Text(
+                    "Mini Bus",
+                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                  ),
+                  SizedBox(height: 8),
+                  Text("Zahraa Nasr City"),
+                  Text("Al-Mokattam, Cairo"),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Row(
+                        children: [
+                          Icon(
+                            Icons.circle,
+                            color: Colors.green,
+                            size: 12,
+                          ),
+                          SizedBox(width: 4),
+                          Text("Live now"),
+                        ],
+                      ),
+                      Text("Available Seats 5/14"),
+                    ],
+                  ),
+                  SizedBox(height: 8),
+                  Text(
+                    "عربي 1456",
+                    style: TextStyle(fontSize: 16),
+                  ),
+                ],
+              ),
+            ),
+          ),
         ],
       ),
       floatingActionButton: Container(
-        margin: const EdgeInsets.fromLTRB(0, 0, 8, 30),
+        margin: const EdgeInsets.fromLTRB(0, 0, 8, 250),
         child: FloatingActionButton(
+          elevation: 0.0,
           backgroundColor: Colors.blue,
           shape:
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(50)),
