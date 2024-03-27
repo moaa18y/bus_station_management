@@ -376,14 +376,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.1.8"
-  rocket_timer:
-    dependency: "direct main"
-    description:
-      name: rocket_timer
-      sha256: "0cdeaeccce97931c4c9b80cc95e405e5280bf909e5ea66920cab58e2e33dd5f5"
-      url: "https://pub.dev"
-    source: hosted
-    version: "0.0.2"
   sanitize_html:
     dependency: transitive
     description:
