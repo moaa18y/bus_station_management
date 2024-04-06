@@ -40,6 +40,7 @@ class _SignupState extends State<Signup> {
             leading: IconButton(
               onPressed: () {
                 Navigator.pop(context);
+                Navigator.pushNamed(context, "/login");
               },
               icon: const Icon(Icons.arrow_back),
             ),

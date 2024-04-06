@@ -67,7 +67,7 @@ class _MapScreenState extends State<MapScreen> {
       appBar: AppBar(
         backgroundColor: Colors.white,
         title: const Text(
-          'Map test',
+          'Show Direction',
           style: TextStyle(
             color: Colors.grey,
             fontSize: 15,
@@ -80,6 +80,7 @@ class _MapScreenState extends State<MapScreen> {
         leading: IconButton(
           onPressed: () {
             Navigator.pop(context);
+            Navigator.pushNamed(context, "/ticket_download");
           },
           icon: const Icon(Icons.arrow_back),
         ),

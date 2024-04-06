@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:tt/pages/ticket_summary.dart';
 
 class MicrobusListPage extends StatefulWidget {
   const MicrobusListPage({super.key});
@@ -9,6 +11,55 @@ class MicrobusListPage extends StatefulWidget {
 }
 
 class _MicrobusListPageState extends State<MicrobusListPage> {
+  final LatLng zoneCenter =
+      const LatLng(30.045761420660106, 31.38068750004098); // zone center
+  final double zoneRadius = 500; // zone radius in meters
+
+  void _checkLocationAndNavigate() async {
+    bool isInsideZone = await _isWithinZone();
+    if (isInsideZone) {
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => const TicketSummaryPage()),
+      );
+    } else {
+      _showNotInZoneDialog();
+    }
+  }
+
+  Future<bool> _isWithinZone() async {
+    Position position = await Geolocator.getCurrentPosition(
+        desiredAccuracy: LocationAccuracy.high);
+    double distance = Geolocator.distanceBetween(
+      position.latitude,
+      position.longitude,
+      zoneCenter.latitude,
+      zoneCenter.longitude,
+    );
+    return distance <= zoneRadius;
+  }
+
+  void _showNotInZoneDialog() {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: const Text('Booking Unavailable'),
+          content: const Text(
+              'You cannot book now!! \nbecause you\'re not inside the zone.'),
+          actions: <Widget>[
+            TextButton(
+              child: const Text('OK'),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+          ],
+        );
+      },
+    );
+  }
+
   List<Microbus> microbuses = [
     Microbus('Microbus 1', true, 10, 15, 'Zahraa Nasr City', 'Al-Marj City',
         50.0, 'ع س ب 1456'),
@@ -49,7 +100,7 @@ class _MicrobusListPageState extends State<MicrobusListPage> {
                 child: const Text('Cancel'),
                 onPressed: () {
                   Navigator.of(context).pop();
-                  Navigator.pushNamed(context, "/home");
+                  Navigator.pushNamed(context, "/homepage");
                 },
               ),
             ],
@@ -78,6 +129,7 @@ class _MicrobusListPageState extends State<MicrobusListPage> {
         leading: IconButton(
           onPressed: () {
             Navigator.pop(context);
+            Navigator.pushNamed(context, "/homepage");
           },
           icon: const Icon(Icons.arrow_back),
         ),
@@ -183,6 +235,7 @@ class _MicrobusListPageState extends State<MicrobusListPage> {
                         ElevatedButton(
                           onPressed: microbuses[index].isAvailable
                               ? () {
+                                  _checkLocationAndNavigate();
                                   // Handle booking logic
                                 }
                               : null,
@@ -228,3 +281,77 @@ class Microbus {
   Microbus(this.name, this.isAvailable, this.availableSeats, this.totalSeats,
       this.from, this.destination, this.price, this.plateNumber);
 }
+
+
+// class ZoneChecker extends StatefulWidget {
+//   const ZoneChecker({super.key});
+
+//   @override
+//   _ZoneCheckerState createState() => _ZoneCheckerState();
+// }
+
+// class _ZoneCheckerState extends State<ZoneChecker> {
+//   final LatLng zoneCenter =
+//       const LatLng(30.045761420660106, 31.38068750004098); // zone center
+//   final double zoneRadius = 500; // zone radius in meters
+
+//   void _checkLocationAndNavigate() async {
+//     bool isInsideZone = await _isWithinZone();
+//     if (isInsideZone) {
+//       Navigator.push(
+//         context,
+//         MaterialPageRoute(builder: (context) => const MapScreen()),
+//       );
+//     } else {
+//       _showNotInZoneDialog();
+//     }
+//   }
+
+//   Future<bool> _isWithinZone() async {
+//     Position position = await Geolocator.getCurrentPosition(
+//         desiredAccuracy: LocationAccuracy.high);
+//     double distance = Geolocator.distanceBetween(
+//       position.latitude,
+//       position.longitude,
+//       zoneCenter.latitude,
+//       zoneCenter.longitude,
+//     );
+//     return distance <= zoneRadius;
+//   }
+
+//   void _showNotInZoneDialog() {
+//     showDialog(
+//       context: context,
+//       builder: (BuildContext context) {
+//         return AlertDialog(
+//           title: const Text('Booking Unavailable'),
+//           content: const Text(
+//               'You cannot book now!! \nbecause you\'re not inside the zone.'),
+//           actions: <Widget>[
+//             TextButton(
+//               child: const Text('OK'),
+//               onPressed: () {
+//                 Navigator.of(context).pop();
+//               },
+//             ),
+//           ],
+//         );
+//       },
+//     );
+//   }
+
+// //   @override
+//   Widget build(BuildContext context) {
+//     return Scaffold(
+//       appBar: AppBar(
+//         title: const Text('Zone Checker'),
+//       ),
+//       body: Center(
+//         child: ElevatedButton(
+//           onPressed: _checkLocationAndNavigate,
+//           child: const Text('Book Now'),
+//         ),
+//       ),
+//     );
+//   }
+// }
