@@ -29,6 +29,7 @@ environment:
 # versions available, run `flutter pub outdated`.
 dependencies:
   cupertino_icons: ^1.0.6
+  dropdown_textfield: ^1.0.8
   flutter:
     sdk: flutter
   flutter_svg: ^2.0.10+1
@@ -36,6 +37,7 @@ dependencies:
   google_maps_flutter: ^2.6.0
   http: ^1.2.1
   location: ^5.0.3
+  select_searchable_list: ^0.1.05
 
 dev_dependencies:
   flutter_lints: ^3.0.0
@@ -56,6 +58,7 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
     - assets/icons/
+    - assets/images/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

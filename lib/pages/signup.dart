@@ -58,7 +58,7 @@ class _SignupState extends State<Signup> {
                   child: Column(
                     children: [
                       //headertext1
-                      const SizedBox(height: 20),
+                      //const SizedBox(height: 20),
                       const Text(
                         'Create A New Account',
                         textAlign: TextAlign.center,
@@ -211,7 +211,7 @@ class _SignupState extends State<Signup> {
                         validator: (value) {
                           if (value!.isEmpty) {
                             return "Enter a password";
-                          }else if(_password.text != _confirmpassword.text){
+                          } else if (_password.text != _confirmpassword.text) {
                             return "Password doesn't match";
                           }
                           return null;
@@ -256,7 +256,7 @@ class _SignupState extends State<Signup> {
                         ),
                       ),
                       //text "or"
-                      const SizedBox(height: 15),
+                      const SizedBox(height: 10),
                       const Text("Or Continue With:",
                           textAlign: TextAlign.center,
                           style: TextStyle(
@@ -265,7 +265,7 @@ class _SignupState extends State<Signup> {
                             fontFamily: 'Montserrat',
                             fontWeight: FontWeight.bold,
                           )),
-                      const SizedBox(height: 10),
+                      //const SizedBox(height: 10),
 
                       //google icon
                       Row(
@@ -289,7 +289,7 @@ class _SignupState extends State<Signup> {
                         ],
                       ),
                       //text Already have an account?
-                      const SizedBox(height: 8),
+                      //const SizedBox(height: 8),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [

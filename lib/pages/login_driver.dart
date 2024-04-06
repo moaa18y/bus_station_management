@@ -1,51 +1,16 @@
-import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:http/http.dart' as http;
-//import 'package:tt/controller/authcontroller.dart';
 
-class Login extends StatefulWidget {
-  const Login({super.key});
+class Login_driver extends StatefulWidget {
+  const Login_driver({super.key});
 
   @override
-  State<Login> createState() => _LoginState();
+  State<Login_driver> createState() => _LoginState();
 }
 
-class _LoginState extends State<Login> {
+class _LoginState extends State<Login_driver> {
   GlobalKey<FormState> formstate = GlobalKey();
-  final TextEditingController _mobileController = TextEditingController();
-  final TextEditingController _passwordController = TextEditingController();
-  bool _isLoading = false;
-
-  Future<void> _login() async {
-    setState(() {
-      _isLoading = true;
-    });
-    var response = await http.post(
-      Uri.parse('http://localhost:4000/api/passenger/login'),
-      headers: <String, String>{
-        'Content-Type': 'application/json; charset=UTF-8',
-      },
-      body: jsonEncode({
-        'mobile': _mobileController.text,
-        'password': _passwordController.text,
-      }),
-    );
-    if (response.statusCode == 200) {
-      // Handle successful login
-      Navigator.of(context).pushReplacementNamed('/test');
-    } else {
-      // Handle login error
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Invalid username or password')),
-      );
-    }
-    setState(() {
-      _isLoading = false;
-    });
-  }
-
   @override
   Widget build(BuildContext context) => GestureDetector(
       onTap: () => FocusScope.of(context).unfocus(),
@@ -53,26 +18,26 @@ class _LoginState extends State<Login> {
           resizeToAvoidBottomInset: false,
           backgroundColor: Colors.white,
           //appbar
-          // appBar: AppBar(
-          //   backgroundColor: Colors.white,
-          //   title: const Text(
-          //     'Sign In',
-          //     style: TextStyle(
-          //       color: Colors.grey,
-          //       fontSize: 15,
-          //       fontFamily: 'Montserrat',
-          //       fontWeight: FontWeight.bold,
-          //     ),
-          //   ),
-          //   elevation: 0.0,
-          //   centerTitle: true,
-          //   leading: IconButton(
-          //     onPressed: () {
-          //       Navigator.pop(context);
-          //     },
-          //     icon: const Icon(Icons.arrow_back),
-          //   ),
-          // ),
+          appBar: AppBar(
+            backgroundColor: Colors.white,
+            title: const Text(
+              'Sign In as driver',
+              style: TextStyle(
+                color: Colors.grey,
+                fontSize: 15,
+                fontFamily: 'Montserrat',
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            elevation: 0.0,
+            centerTitle: true,
+            leading: IconButton(
+              onPressed: () {
+                Navigator.pop(context);
+              },
+              icon: const Icon(Icons.arrow_back),
+            ),
+          ),
           body: Center(
             child: SingleChildScrollView(
               keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
@@ -93,6 +58,7 @@ class _LoginState extends State<Login> {
                         fontWeight: FontWeight.bold,
                       ),
                     ),
+
                     //headertext2
                     const SizedBox(height: 10),
                     const Text(
@@ -102,13 +68,12 @@ class _LoginState extends State<Login> {
                         color: Colors.black,
                         fontSize: 24,
                         fontFamily: 'Montserrat',
-                        fontWeight: FontWeight.w300,
+                        fontWeight: FontWeight.bold,
                       ),
                     ),
                     //textfield mobile number
                     const SizedBox(height: 50),
                     TextFormField(
-                      controller: _mobileController,
                       validator: (value) {
                         if (value!.isEmpty) {
                           return "Enter a mobile number";
@@ -134,10 +99,10 @@ class _LoginState extends State<Login> {
                             color: Color(0xFF999999),
                           )),
                     ),
+
                     // textfield password
                     const SizedBox(height: 40),
                     TextFormField(
-                      controller: _passwordController,
                       validator: (value) {
                         if (value!.isEmpty) {
                           return "Enter a Password";
@@ -177,35 +142,32 @@ class _LoginState extends State<Login> {
                       ),
                     ),
                     //sign in button
-                    _isLoading
-                        ? const CircularProgressIndicator()
-                        : SizedBox(
-                            height: 48,
-                            width: 275,
-                            child: ElevatedButton(
-                              style: ElevatedButton.styleFrom(
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(5),
-                                  ),
-                                  backgroundColor: const Color(0xFF00ADCF)),
-                              //onPressed: _login,
-                              onPressed: () {
-                                // Add your sign in logic here
-                                if (formstate.currentState!.validate()) {
-                                  _login;
-                                }
-                              },
-                              child: const Text(
-                                'Sign In',
-                                textAlign: TextAlign.center,
-                                style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 14,
-                                  fontFamily: 'Montserrat',
-                                ),
-                              ),
+                    SizedBox(
+                      height: 48,
+                      width: 275,
+                      child: ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(5),
                             ),
+                            backgroundColor: const Color(0xFF00ADCF)),
+                        onPressed: () {
+                          // Add your sign in logic here
+                          if (formstate.currentState!.validate()) {
+                            Login_driver();
+                          }
+                        },
+                        child: const Text(
+                          'Sign In',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 14,
+                            fontFamily: 'Montserrat',
                           ),
+                        ),
+                      ),
+                    ),
                     //text "or"
                     const SizedBox(height: 20),
                     const Text("Or Continue With:",
@@ -217,6 +179,7 @@ class _LoginState extends State<Login> {
                           fontWeight: FontWeight.bold,
                         )),
                     const SizedBox(height: 10),
+
                     //google icon
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -235,33 +198,6 @@ class _LoginState extends State<Login> {
                           decoration: const BoxDecoration(),
                           child: SvgPicture.asset('assets/icons/facebook.svg',
                               height: 40),
-                        ),
-                      ],
-                    ),
-                    //text dont have account
-                    const SizedBox(height: 25),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        const Text('Don’t have an account?',
-                            style: TextStyle(
-                              color: Colors.black,
-                              fontSize: 13,
-                              fontFamily: 'Montserrat',
-                              fontWeight: FontWeight.bold,
-                            )),
-                        const SizedBox(width: 5),
-                        GestureDetector(
-                          onTap: () {
-                            Navigator.pushNamed(context, "/signup");
-                          },
-                          child: const Text('Sign up',
-                              style: TextStyle(
-                                  color: Color(0xFF00ADCF),
-                                  fontSize: 13,
-                                  fontFamily: 'Montserrat',
-                                  fontWeight: FontWeight.bold,
-                                  decoration: TextDecoration.underline)),
                         ),
                       ],
                     ),
