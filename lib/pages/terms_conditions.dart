@@ -9,7 +9,7 @@ class TermsAndConditionsPage extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Colors.white,
         title: const Text(
-          'Terms and Conditions ',
+          'Terms and Conditions',
           style: TextStyle(
             color: Colors.grey,
             fontSize: 15,
@@ -18,13 +18,6 @@ class TermsAndConditionsPage extends StatelessWidget {
         ),
         elevation: 0.0,
         centerTitle: true,
-        leading: IconButton(
-          onPressed: () {
-            Navigator.pop(context);
-            Navigator.pushNamed(context, "/ticket_summary");
-          },
-          icon: const Icon(Icons.arrow_back),
-        ),
       ),
       body: const SingleChildScrollView(
         padding: EdgeInsets.all(16.0),

@@ -23,12 +23,12 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      initialRoute: "/ticket_download",
+      initialRoute: "/homepage",
       routes: {
         "/st1": (context) => const Start1(),
         "/st2": (context) => const Start2(),
         "/st3": (context) => const Start3(),
-        "/st4": (context) => const Start4(),        
+        "/st4": (context) => const Start4(),
         "/login": (context) => const Login(),
         "/signup": (context) => const Signup(),
         "/main_map": (context) => const MapScreen(),
@@ -37,8 +37,6 @@ class MyApp extends StatelessWidget {
         "/ticket_summary": (context) => const TicketSummaryPage(),
         "/ticket_download": (context) => const TicketPage(),
         "/terms_conditions": (context) => const TermsAndConditionsPage(),
-
-
       },
       theme: ThemeData(
         fontFamily: 'Montserrat',

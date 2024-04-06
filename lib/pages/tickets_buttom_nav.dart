@@ -7,7 +7,17 @@ class TicketsPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Tickets'),
+        backgroundColor: Colors.white,
+        title: const Text(
+          'Tickets',
+          style: TextStyle(
+            color: Colors.grey,
+            fontSize: 15,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+        elevation: 0.0,
+        centerTitle: true,
       ),
       body: const Center(
         child: Text('This is the Tickets Page'),

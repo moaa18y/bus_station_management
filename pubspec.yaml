@@ -33,12 +33,14 @@ dependencies:
   flutter:
     sdk: flutter
   flutter_svg: ^2.0.10+1
+  font_awesome_flutter: ^10.7.0
   geolocator: ^11.0.0
   google_maps_flutter: ^2.6.0
   http: ^1.2.1
   location: ^5.0.3
   path_provider: ^2.1.2
   select_searchable_list: ^0.1.05
+  url_launcher: ^6.2.5
 
 dev_dependencies:
   flutter_lints: ^3.0.0
