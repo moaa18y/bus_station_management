@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:http/http.dart' as http;
-//import 'package:tt/controller/authcontroller.dart';
 
 class Login extends StatefulWidget {
   const Login({super.key});
@@ -34,7 +33,7 @@ class _LoginState extends State<Login> {
     );
     if (response.statusCode == 200) {
       // Handle successful login
-      Navigator.of(context).pushReplacementNamed('/test');
+      Navigator.of(context).pushReplacementNamed('/homepage');
     } else {
       // Handle login error
       ScaffoldMessenger.of(context).showSnackBar(
