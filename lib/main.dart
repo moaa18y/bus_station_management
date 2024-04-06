@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:tt/pages/homepage.dart';
-import 'package:tt/pages/home.dart';
 import 'package:tt/pages/microbus.dart';
 import 'package:tt/pages/start2.dart';
 import 'package:tt/pages/start3.dart';
@@ -34,7 +33,6 @@ class MyApp extends StatelessWidget {
         "/map": (context) => const Map(),
         "/main_map": (context) => const MapScreen(),
         "/zonechecker": (context) => const ZoneChecker(),
-       "/home": (context) => const Home(),
         "/microbus": (context) => const MicrobusListPage(),
         "/homepage": (context) => const HomePage(),
 

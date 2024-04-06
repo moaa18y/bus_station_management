@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:tt/pages/home.dart';
+import 'package:tt/pages/home_buttom_nav.dart';
+import 'package:tt/pages/more_buttom_nav.dart';
+import 'package:tt/pages/tickets_buttom_nav.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -12,9 +14,9 @@ class _HomePageState extends State<HomePage> {
   int _selectedIndex = 0;
 
   static const List<Widget> _widgetOptions = <Widget>[
-    Home(),
-    TicketsPage(),
-    MorePage(),
+    Home_Main(),
+    Tickets_Main(),
+    More_Main(),
   ];
 
   void _onItemTapped(int index) {
@@ -52,8 +54,8 @@ class _HomePageState extends State<HomePage> {
   }
 }
 
-class Main extends StatelessWidget {
-  const Main({super.key});
+class Home_Main extends StatelessWidget {
+  const Home_Main({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -63,34 +65,24 @@ class Main extends StatelessWidget {
   }
 }
 
-class TicketsPage extends StatelessWidget {
-  const TicketsPage({super.key});
+class Tickets_Main extends StatelessWidget {
+  const Tickets_Main({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Tickets'),
-      ),
-      body: const Center(
-        child: Text('This is the Tickets Page'),
-      ),
+    return const Scaffold(
+      body: TicketsPage(),
     );
   }
 }
 
-class MorePage extends StatelessWidget {
-  const MorePage({super.key});
+class More_Main extends StatelessWidget {
+  const More_Main({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('More'),
-      ),
-      body: const Center(
-        child: Text('This is the More Page'),
-      ),
+    return const Scaffold(
+      body: MorePage(),
     );
   }
 }
