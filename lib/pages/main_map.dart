@@ -61,6 +61,16 @@ class _MapScreenState extends State<MapScreen> {
     // Move the camera to show both user and destination
   }
 
+  //draw zone
+  Set<Circle> myCircles = {
+    Circle(
+      circleId: const CircleId('1'),
+      fillColor: Colors.green.withOpacity(0.4),
+      center: const LatLng(30.045761420660106, 31.38068750004098),
+      radius: 500,
+      strokeWidth: 1,
+    )
+  };
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -86,6 +96,7 @@ class _MapScreenState extends State<MapScreen> {
         ),
       ),
       body: GoogleMap(
+        circles: myCircles,
         cameraTargetBounds: CameraTargetBounds(LatLngBounds(
             southwest: const LatLng(30.044563370151725, 31.372447754339312),
             northeast: const LatLng(30.047553825717674, 31.389334941345865))),

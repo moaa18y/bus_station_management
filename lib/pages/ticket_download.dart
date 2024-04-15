@@ -93,7 +93,7 @@ class _TicketPageState extends State<TicketPage> {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: <Widget>[
                     const SizedBox(height: 16),
-                    const Text('Arrival Time', style: TextStyle(fontSize: 14)),
+                    const Text('Hold Time', style: TextStyle(fontSize: 14)),
                     Text(
                       '${_duration.inMinutes.toString().padLeft(2, '0')}:${(_duration.inSeconds % 60).toString().padLeft(2, '0')}',
                       style: TextStyle(
